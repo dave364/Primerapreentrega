@@ -3,7 +3,7 @@ import CartWidget from './CartWidget';
 import React from 'react';
 
 
- const NavBar = () => {
+export const NavBar = () => {
     return (
         <div className='container'>
             <nav className='nav'>
