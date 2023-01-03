@@ -5,3 +5,5 @@ export const Title = () => {
     <h1>CONTENIDO</h1>
   )
 }
+
+export default Title;

@@ -6,3 +6,5 @@ export const ItemListContainer = () => {
     <Title />
   )
 }
+
+export default ItemListContainer;

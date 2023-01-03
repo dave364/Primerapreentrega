@@ -1,7 +1,7 @@
-import React from 'react'
-
-export const CartWidget = () => {
+ const CartWidget = () => {
   return (
     <i className="bi bi-cart4"></i>
   )
 }
+
+export default CartWidget;
