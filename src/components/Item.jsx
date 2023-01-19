@@ -4,9 +4,13 @@ import React from 'react';
 
 const Item = ({info}) => {
     return (
-        <Link to={`/Primerapreentrega/detalle/ ${info.id}`} className="shoe">
+    <Link to={`/Primerapreentrega/detalle/ ${info.id}`} className="shoe">
+        <div>
+    <div>
     <img src= {info.img} alt="" />
-    <h1>{info.nombre}</h1>
+    <h2 className='card-title'>{info.nombre}</h2>
+    </div>
+    </div>
     </Link>
     );
 }

@@ -13,6 +13,16 @@ const shoes = [
     precio: 2000,
     img: "https://http2.mlstatic.com/D_NQ_NP_692985-MLA50236559821_062022-O.webp",
     category: "modernos"},
+    {id: 3,
+    nombre: "Nike clasicos ",
+    precio: 2500,
+    img: "https://http2.mlstatic.com/D_NQ_NP_948714-MLV46967864052_082021-W.jpg",
+    category: "clasicos"},
+    {id: 4,
+    nombre: "Nike modernos",
+    precio: 3000,
+    img: "https://laopinion.com/wp-content/uploads/sites/3/2022/05/Nike-Free-Run-2.jpg?quality=80&strip=all&w=1200",
+    category: "modernos"},
   ];
 
 const ItemDetailContainer = () => {

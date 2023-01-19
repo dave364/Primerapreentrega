@@ -1,8 +1,9 @@
 import React from 'react'
+import './title.css';
 
 export const Title = () => {
   return (
-    <h1>CONTENIDO</h1>
+    <h1>TODOS NUESTROS PRODUCTOS</h1>
   )
 }
 
