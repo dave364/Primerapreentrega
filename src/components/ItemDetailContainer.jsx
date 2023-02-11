@@ -1,8 +1,9 @@
+import React, { useEffect, useState } from 'react';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import ItemDetail from './ItemDetail';
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
-const shoes = [
+/*const shoes = [
     {id: 1,
     nombre:  "Converse clasicos",
     precio: 1000,
@@ -23,22 +24,29 @@ const shoes = [
     precio: 3000,
     img: "https://laopinion.com/wp-content/uploads/sites/3/2022/05/Nike-Free-Run-2.jpg?quality=80&strip=all&w=1200",
     category: "modernos"},
-  ];
+  ];*/
 
-const ItemDetailContainer = () => {
+export const ItemDetailContainer = () => {
     const [data, setData] = useState({});
-
     const {detalleId} = useParams();
 
     useEffect(() => {
-        const getData =new Promise(resolve => {
-         setTimeout(() => {
-            resolve(shoes);
-         }, 1000);   
-        });
-    
-        getData.then(res => setData(res.find(shoe => shoe.id === parseInt(detalleId))));
-     }, [])  
+
+        const db = getFirestore();
+        /*console.log({querydb})
+        console.log({detalleId})
+        const queryDoc = doc(querydb, 'zapatos', detalleId);
+        console.log({queryDoc})
+        getDoc(queryDoc)
+            .then(res => console.log( "queryDoc", {id: res.id, ...res.data() }) )
+        */
+        console.log({detalleId})
+        //const ref = doc(db, "zapatos", "0HK1aREpGpywdLCc5w7J");
+        const ref = doc(db, "zapatos", detalleId.trim());
+        //const docSnap = await getDoc(ref);
+        console.log({ref})
+        getDoc(ref).then(res => setData({id: res.id, ...res.data() }) )
+        }, [])  
 
 
     return (

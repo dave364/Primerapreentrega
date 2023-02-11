@@ -1,10 +1,10 @@
-import ItemCount from './ItemCount.jsx'
-import ItemLis from "./ItemList"
-import { useEffect, useState } from 'react'
-import  Title  from './Title'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+import ItemLis from "./ItemList";
+import { useParams } from 'react-router-dom';
+import  Title  from './Title';
 
-const shoes = [
+/*const shoes = [
   {id: "1",
   nombre:  "Converse clasicos",
   precio: 1000,
@@ -25,7 +25,7 @@ const shoes = [
   precio: 3000,
   img: "https://http2.mlstatic.com/D_NQ_NP_813094-MLA50401970090_062022-W.jpghttps://laopinion.com/wp-content/uploads/sites/3/2022/05/Nike-Free-Run-2.jpg?quality=80&strip=all&w=1200",
   category: "modernos"},
-];
+];*/
 
 export const ItemListContainer = () => {
   const [data, setData] = useState([]);
@@ -33,27 +33,24 @@ export const ItemListContainer = () => {
   const {categoriaId} = useParams();
 
   useEffect(()=> {
-     const getData = new Promise(resolve => {
-      setTimeout(() => {
-      resolve(shoes);
-      }, 1000);
-     });
+  const querydb = getFirestore();
+  const queryCollection = collection(querydb, "zapatos");
      if (categoriaId) {
-         getData.then(res => setData(res.filter(shoe => shoe.category === categoriaId)));
+      const queryFilter = query(queryCollection, where("category", "==", categoriaId))
+      getDocs(queryFilter)
+      .then(res => setData(res.docs.map(zapatos => ({id: zapatos.id, ...zapatos.data() }))))
      } else {
-         getData.then(res => setData(res));
+      getDocs(queryCollection)
+      .then(res => setData(res.docs.map(zapatos => ({id: zapatos.id, ...zapatos.data() }))))
      }
   }, [categoriaId])
 
-   const onAdd = (quantity) => {
-     console.log(`compraste ${quantity} unidades`);
-   }
+   
 
   return (
     <>
-    <ItemCount initial={1} stock={10} onAdd={onAdd} />
-    <Title />
-    <ItemLis data={data}/>
+      <Title />
+      <ItemLis data={data}/>
     </>
     
   );
