@@ -11,6 +11,8 @@ Este proyecto de ecommerce es elaborado en React Js. conectado a Firebase / Fire
 
 5-Cuando navegamos en cart veremos el detalle de todos los productos seleccionados con el detalle de costo total y cuenta con un boton "comprar" para continuar con la compra.
 
+6-Se utiliza la libreria de bootstrap para algunos estilos en botones y icon.
+
 7- Al clickear botón "comprar" nos dará un mensaje con el código de orden de compra.
 
 8- El stock es manejado por firestore y se actualiza por cada orden de compra realizado.
